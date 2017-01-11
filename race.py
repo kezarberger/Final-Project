@@ -3,8 +3,8 @@
 from ggame import App, RectangleAsset, ImageAsset, SoundAsset, Sprite, Sound
 from ggame import LineStyle, Color
 
-SCREEN_WIDTH = 1358
-SCREEN_HEIGHT = 600
+SCREEN_WIDTH = 1400
+SCREEN_HEIGHT = 700
 
 yellow = Color(0xfff400, 1.0)
 red = Color(0xff0000, 1.0)
@@ -40,7 +40,7 @@ def reverse(c):
 def step():
     if bunny.go:
         bunny.x += bunny.dir
-        if bunny.x + bunny.width > SCREEN_WIDTH:
+        if bunny.x + bunny.width > SCREEN_WIDTH or beachball.x < 0:
             bunny.x -= bunny.dir
             bunny.dir *= -1
     if beachball.go:
