@@ -1,43 +1,9 @@
-""""
-# Title of Your Project Here
 
-
-
-## Functional Specification
-
-This document should become the functional specification of the project you are working on.
-
-A functional specification describes in great detail how a device or program will appear to an
-outside user. That is, it treats all hardware as a "black box", the contents of which are completely
-unknown to the user. The functional specification should include sections with the following information:
-
-Your specification **should include** the following types of information:
-
-* A title. Replace the title at the beginning of this document.
-* Summary or introduction. In general, in a few lines or less, what is your program about or what is it about?
-* How does the user access your program? Is it shared via http://runpython.com? Is a web site? Embedded in 
-  a single board computer? 
-* If there are graphics screens involved, describe every screen that the user will experience: what is it for? 
-  What did the user have to do to get there and how does she move on to the next?
-* For each graphics screen, describe every active control input and what it does. What elements on the screen will
-  change in response to user input?
-* Does the program respond to mouse input? What, exactly, does the mouse do?
-* Does the program respond to keyboard input? How?
-* What graphical assets will be used?
-* Does the user have to do anything to install the program?
-
-Your specification should **not** include the following types of information:
-
-* The language you will use to create it.
-* Names of any specific files in the project.
-* How you will structure the classes, functions and code in your program.
-* The name of any files or tools that you will use to design the program.
-"""
 
 from ggame import App, RectangleAsset, ImageAsset, SoundAsset, Sprite, Sound
 from ggame import LineStyle, Color
 
-SCREEN_WIDTH = 1200
+SCREEN_WIDTH = 1358
 SCREEN_HEIGHT = 600
 
 yellow = Color(0xfff400, 1.0)
@@ -47,18 +13,29 @@ blue = Color(0x0000ff, 1.0)
 white = Color(0xffffff, 1.0)
 black = Color(0, 1)
 noline = LineStyle(0, black)
-bg_asset = RectangleAsset(SCREEN_WIDTH, SCREEN_HEIGHT, noline, green)
+bg_asset = RectangleAsset(SCREEN_WIDTH, SCREEN_HEIGHT, noline, red)
 bg = Sprite(bg_asset, (0,0))
 
 bunny_asset = ImageAsset("images/bunny.png")
 bunny = Sprite(bunny_asset, (0,0))
-bunny.scale = 2
+bunny.scale = 1.5
 bunny.dir = 5
 bunny.go = True
+
+beachball_asset = ImageAsset("images/beach-ball-575425_640.png")
+beachball = Sprite(beachball_asset, (0,200))
+beachball.scale = .2
+beachball.dir = 5
+beachball.go = True
+
 
 def reverse(b):
     b.dir *= -1
     pop.play()
+    
+def reverse(c):
+    c.dir *= -1
+    po.play()
 
 
 def step():
@@ -67,11 +44,16 @@ def step():
         if bunny.x + bunny.width > SCREEN_WIDTH or bunny.x < 0:
             bunny.x -= bunny.dir
             bunny.dir *= -1
-            
+    if beachball.go:
+        beachball.x += beachball.dir
+        if beachball.x + beachball.width > SCREEN_WIDTH or beachball.x < 0:
+            beachball.x -= beachball.dir
+            beachball.dir *= -1
+
+
 def spaceKey(event):
     bunny.go = not bunny.go
 
-# Handle the "reverse" key
 def rKey(event):
     reverse(bunny)
     
@@ -79,7 +61,7 @@ def zKey(event):
     bunny.scale = 1
 
 def xKey(event):
-    bunny.scale = 2    
+    bunny.scale = 1.5    
 
 def mKey(event):
     if bunny.dir > 2.5 or bunny.dir < -2.5:
@@ -89,7 +71,14 @@ def nKey(event):
     if bunny.dir < 5 and bunny.dir > -5:
         bunny.dir *= 2 
     
-
+def tKey(event):
+    beachball.go = not beachball.go
+    
+def eKey(event):
+    reverse(beachball)
+    
+def wKey(event):
+    beachball.scale = 1.5
 
 myapp = App(SCREEN_WIDTH, SCREEN_HEIGHT)
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
