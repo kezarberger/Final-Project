@@ -31,17 +31,16 @@ beachball.go = True
 
 def reverse(b):
     b.dir *= -1
-    pop.play()
-    
+
 def reverse(c):
     c.dir *= -1
-    pop.play()
+   
 
 
 def step():
     if bunny.go:
         bunny.x += bunny.dir
-        if bunny.x + bunny.width > SCREEN_WIDTH or bunny.x < 0:
+        if bunny.x + bunny.width > SCREEN_WIDTH:
             bunny.x -= bunny.dir
             bunny.dir *= -1
     if beachball.go:
