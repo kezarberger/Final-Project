@@ -35,7 +35,7 @@ def reverse(b):
     
 def reverse(c):
     c.dir *= -1
-    po.play()
+    pop.play()
 
 
 def step():
@@ -78,7 +78,20 @@ def eKey(event):
     reverse(beachball)
     
 def wKey(event):
-    beachball.scale = 1.5
+    if beachball.scale >= .025:
+        beachball.scale /= 2
+
+def qKey(event):
+    if beachball.scale <= .2:
+        beachball.scale *= 2
+    
+def yKey(event):
+     if beachball.dir > 2.5 or beachball.dir < -2.5:
+        beachball.dir /= 2
+        
+def uKey(event):
+    if beachball.dir < 5 and beachball.dir > -5:
+        beachball.dir *= 2 
 
 myapp = App(SCREEN_WIDTH, SCREEN_HEIGHT)
 myapp.listenKeyEvent('keydown', 'space', spaceKey)
@@ -87,4 +100,10 @@ myapp.listenKeyEvent('keydown', 'z', zKey)
 myapp.listenKeyEvent('keydown', 'x', xKey)
 myapp.listenKeyEvent('keydown', 'm', mKey)
 myapp.listenKeyEvent('keydown', 'n', nKey)
+myapp.listenKeyEvent('keydown', 't', tKey)
+myapp.listenKeyEvent('keydown', 'e', eKey)
+myapp.listenKeyEvent('keydown', 'w', wKey)
+myapp.listenKeyEvent('keydown', 'q', qKey)
+myapp.listenKeyEvent('keydown', 'y', yKey)
+myapp.listenKeyEvent('keydown', 'u', uKey)
 myapp.run(step)
