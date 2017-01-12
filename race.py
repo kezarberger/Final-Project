@@ -72,10 +72,6 @@ def step():
             marble.x -= marble.dir
             marble.dir *= -1
             
-if marble.x <= bunny.width and marble.y <= bunny.height:
-    bunny.go = not bunny.go
-
-    
 
 def spaceKey(event):
     bunny.go = not bunny.go
