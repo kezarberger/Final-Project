@@ -17,11 +17,11 @@ bg = Sprite(bg_asset, (0,0))
 bunny_asset = ImageAsset("images/bunny.png")
 bunny = Sprite(bunny_asset, (0,0))
 bunny.scale = 1.5
-bunny.dir = 0
+bunny.dir = 2.5
 bunny.go = True
 
 beachball_asset = ImageAsset("images/beach-ball-575425_640.png")
-beachball = Sprite(beachball_asset, (0,200))
+beachball = Sprite(beachball_asset, (20,200))
 beachball.scale = .2
 beachball.dir = 2.5
 beachball.go = True
@@ -52,9 +52,9 @@ def reverse(m):
 
 def step():
     if bunny.go:
-        bunny.x += bunny.dir
-        if bunny.x + bunny.width > SCREEN_WIDTH or bunny.x < 0:
-            bunny.x -= bunny.dir
+        bunny.y += bunny.dir
+        if bunny.y + bunny.width > SCREEN_HEIGHT or bunny.y < 0:
+            bunny.y -= bunny.dir
             bunny.dir *= -1
     if beachball.go:
         beachball.x += beachball.dir
@@ -94,13 +94,13 @@ def nKey(event):
         bunny.dir *= 2 
         
 def cKey(event):
-    bunny.dir = 2.5
+    bunny.dir /= 2
     
 def vKey(event):
-    bunny.dir = 2.5
+    bunny.dir = -2.5
     
 def bKey(event):
-    bunny.dir = 2.5
+    bunny.dir /= 2
     
 def tKey(event):
     beachball.go = not beachball.go
@@ -143,7 +143,7 @@ def fKey(event):
         sun.dir -= .25
         
 def sKey(event):
-    if sun.dir >= 1.5 and sun.dir <= 5:
+    if sun.dir >= 1 and sun.dir <= 5:
         sun.dir += .25
 
 def lKey(event):
