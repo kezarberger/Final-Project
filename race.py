@@ -94,7 +94,7 @@ def nKey(event):
         bunny.dir *= 2 
         
 def cKey(event):
-    bunny.dir /= 2
+    bunny.dir = 2.5
     
 def vKey(event):
     bunny.dir = -2.5
