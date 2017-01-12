@@ -1,8 +1,8 @@
 from ggame import App, RectangleAsset, ImageAsset, SoundAsset, Sprite, Sound
 from ggame import LineStyle, Color
 
-SCREEN_WIDTH = 1400
-SCREEN_HEIGHT = 700
+SCREEN_WIDTH = 1900
+SCREEN_HEIGHT = 900
 
 yellow = Color(0xfff400, 1.0)
 red = Color(0xff0000, 1.0)
@@ -21,19 +21,19 @@ bunny.dir = 2.5
 bunny.go = True
 
 beachball_asset = ImageAsset("images/beach-ball-575425_640.png")
-beachball = Sprite(beachball_asset, (20,200))
+beachball = Sprite(beachball_asset, (20,300))
 beachball.scale = .2
 beachball.dir = 2.5
 beachball.go = True
 
 sun_asset = ImageAsset("images/sun.png")
-sun = Sprite(sun_asset, (20,375))
+sun = Sprite(sun_asset, (20,500))
 sun.scale = 1.5
 sun.dir = 2.5
 sun.go = True
 
 marble_asset = ImageAsset("images/orb-150545_640.png")
-marble = Sprite(marble_asset, (0,500))
+marble = Sprite(marble_asset, (0,700))
 marble.scale = .2
 marble.dir = 2.5
 marble.go = True
