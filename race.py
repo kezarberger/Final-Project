@@ -71,6 +71,10 @@ def step():
         if marble.x + marble.width > SCREEN_WIDTH or marble.x < 0:
             marble.x -= marble.dir
             marble.dir *= -1
+            
+if marble.x <= bunny.width and marble.y <= bunny.height:
+    bunny.go = not bunny.go
+
     
 
 def spaceKey(event):
